@@ -1,0 +1,24 @@
+Starting  up a new MariaDB 10.4(Stable) Galera Cluster on Ubuntu 18.04 bionic.
+Sample for - /etc/mysql/conf.d/galera.cnf --> do this in all the nodes
+
+[mysqld]
+binlog_format=ROW
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+bind-address=0.0.0.0
+
+# Galera Provider Configuration
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+
+# Galera Cluster Configuration
+wsrep_cluster_name="db_cluster"
+#after the setup is complete update all the linked addresses below
+wsrep_cluster_address="gcomm://ip-node1"
+
+# Galera Synchronization Configuration
+wsrep_sst_method=rsync
+
+# Galera Node Configuration
+wsrep_node_address="local_ip"
+wsrep_node_name="Node_name"
