@@ -14,24 +14,22 @@ Run the below commands sequentially:::
 
 3. sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.rackspace.com/mariadb/repo/10.4/ubuntu bionic main'
 
+The above can be changed and used according to the OS and MariaDB version used.
+Refer https://downloads.mariadb.org/mariadb/repositories/
+
 Now the keys are imported and the repository is added for MariaDB 10.4 stable version
 
 Installing MariaDB now.
 
 4. sudo apt update
+
    sudo apt install mariadb-server
-
-5. Add debug conponents from sources list --
-	sudo add-apt-repository 'deb [arch=amd64,arm64,ppc64el] http://mirror.rackspace.com/mariadb/repo/10.4/ubuntu bionic main'
-
-The above can be changed and used according to the OS and MariaDB version used.
-Refer https://downloads.mariadb.org/mariadb/repositories/
-
 
 6. Edit galera configuration and set /etc/mysql/conf.d/galera.cnf (Check galera.cnf in repo)
   vim /etc/mysql/conf.d/galera.cnf
 
 7. Stop all the mysql servers 
+
 	service mysql stop
   
 8.  Initiate the galera cluster in the Node 1. You just need to init this once.
